@@ -1,8 +1,14 @@
 package oop_terminal;
-class Bus extends Transportation {
 
- Bus(String name) {
-    super(name);
-  }
+public class Bus extends Transportation {
 
+    public Bus(String name) {
+        super(name);
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Bus " + getName() + " is running");
+    }
 }
+

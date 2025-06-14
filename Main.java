@@ -5,5 +5,7 @@ public class Main {
 
     Car car = new Car("honda");
     car.run();
+    Bus bus = new Bus("hantoyono");
+    bus.run();
   }
 }

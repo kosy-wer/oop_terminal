@@ -1,14 +1,20 @@
 package oop_terminal;
+public abstract class Transportation {
+    protected String name;
 
-public class Transportation {
+    public Transportation(String name) {
+        this.name = name;
+    }
 
-  String name;
+    // ✅ Getter & Setter di sini (parent)
+    public String getName() {
+        return name;
+    }
 
- Transportation(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void run() {
-    System.out.println("transportation "+ this.name + " is running");
-  }
+    public abstract void run();
 }
+
