@@ -6,7 +6,7 @@ public abstract class Transportation {
         this.name = name;
     }
 
-    // ✅ Getter & Setter di sini (parent)
+    // Getter & Setter
     public String getName() {
         return name;
     }
@@ -16,5 +16,10 @@ public abstract class Transportation {
     }
 
     public abstract void run();
+
+    @Override
+    public String toString() {
+        return "Car: " + name;
+    }
 }
 
