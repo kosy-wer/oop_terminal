@@ -2,6 +2,8 @@ package oop_terminal;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Iterator;
+
 
 public class Main {
     static ArrayList<Car> cars = new ArrayList<>();
@@ -21,7 +23,7 @@ public class Main {
                 case "add" -> add();
                 case "show" -> show();
                 case "edit" -> edit();
-                case "remove" -> hapusMobil();
+                case "remove" -> remove();
                 case "quit" -> {
                     System.out.println("Quit...");
                     return;
@@ -32,10 +34,10 @@ public class Main {
     }
 
     static void add() {
-        System.out.print("Input brand");
+        System.out.print("Input brand: ");
         String brand = input.nextLine();
 
-            cars.add(new Car(nama));
+            cars.add(new Car(brand));
             System.out.println("succes input");
     }
 
@@ -54,7 +56,7 @@ public class Main {
         show();
         if (cars.isEmpty()) return;
 
-        System.out.print("Select the data you want to edit ");
+        System.out.print("Select name Brand you want to edit ");
 	String name = input.nextLine();
 
 	boolean find = false;
@@ -63,10 +65,10 @@ public class Main {
             System.out.print("Input New Name brand: ");
             String newname = input.nextLine();
                 car.setName(newname);
-            }
-
-            ditemukan = true;
-            break; // keluar dari loop setelah edit
+		find = true;
+                System.out.println(find);
+                break;
+         }
         }
     	
 
@@ -77,29 +79,28 @@ public class Main {
 
   static void remove() {
     if (cars.isEmpty()) {
-        System.out.println("Belum ada mobil.");
+        System.out.println("Data empty");
         return;
     }
 
-    System.out.print("Masukkan nama mobil yang mau dihapus: ");
-    String namaHapus = input.nextLine();
+    System.out.print("Input name brand: ");
+    String name = input.nextLine();
 
-    boolean ketemu = false;
+    boolean find = false;
 
-    // Gunakan iterator agar aman saat menghapus saat loop
     Iterator<Car> iterator = cars.iterator();
     while (iterator.hasNext()) {
         Car car = iterator.next();
-        if (car.getName().equalsIgnoreCase(namaHapus)) {
-            iterator.remove(); // cara aman hapus saat loop
-            System.out.println("Mobil " + namaHapus + " berhasil dihapus.");
-            ketemu = true;
+        if (car.getName().equalsIgnoreCase(name)) {
+            iterator.remove(); 
+            System.out.println("Car " + name + " succes to remove.");
+    	    find = true;
             break;
         }
     }
 
-    if (!ketemu) {
-        System.out.println("Mobil dengan nama tersebut tidak ditemukan.");
+    if (!find) {
+        System.out.println("Brand Car "+ name +"not found.");
     }
 }
 
