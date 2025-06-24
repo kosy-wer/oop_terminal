@@ -6,25 +6,28 @@ import java.util.Iterator;
 
 
 public class Main {
-    static ArrayList<Car> cars = new ArrayList<>();
+    static ArrayList<Car> vehicles = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         while (true) {
-            System.out.println("\n=== MENU ===");
-            System.out.println("add");
-            System.out.println("show");
-            System.out.println("edit");
-            System.out.println("remove");
-            System.out.println("quit");
-            String chose = input.nextLine();
-
-            switch (chose) {
-                case "add" -> add();
-                case "show" -> show();
-                case "edit" -> edit();
-                case "remove" -> remove();
-                case "quit" -> {
+	System.out.println("+----------------------------+");
+        System.out.println("|    Options  Selection      |");
+        System.out.println("+----------------------------+");
+        System.out.println("| Add                        |");
+        System.out.println("| Remove                     |");
+        System.out.println("| Show                       |");
+        System.out.println("| View                       |");
+        System.out.println("| Exit                       |");
+        System.out.println("+----------------------------+");
+        System.out.print("Choose option : ");
+        String choice = input.nextLine();
+            switch (choice) {
+                case "Add" -> add();/*
+                case "Remove" -> remove();
+                case "Show" -> show();
+                case "Edit" -> edit();*/
+                case "Exit" -> {
                     System.out.println("Quit...");
                     return;
                 }
@@ -34,15 +37,32 @@ public class Main {
     }
 
     static void add() {
-        System.out.print("Input brand: ");
-        String brand = input.nextLine();
+     System.out.println("+----------------------------+");
+        System.out.println("|    🚘 Vehicle Selection    |");
+        System.out.println("+----------------------------+");
+        System.out.println("| 1. Car 🚗                  |");
+        System.out.println("| 2. Bus 🚌                  |");
+        System.out.println("| 3. Truck 🚚                |");
+        System.out.println("+----------------------------+");
+        System.out.print("Choose vehicle : ");
+        String vehicle = input.nextLine();
+	String[] Transportations = {"Car","Bus","Truck",};
+	boolean verife = false; 
+ 	for (String T : Transportations) {
+	 if (T.equalsIgnoreCase(vehicle)){
 
-            cars.add(new Car(brand));
-            System.out.println("succes input");
+	    verife = true;
+	    break;	
+	 }
+        }
+	if (verife == false) {
+            System.out.println("Gagal");
+        }	
+            
     }
-
+/*
     static void show() {
-        if (cars.isEmpty()) {
+        if (vehicles.isEmpty()) {
             System.out.println("data empty");
             return;
         }
@@ -51,16 +71,15 @@ public class Main {
             System.out.println((i + 1) + ". " + cars.get(i));
         }
     }
-
     static void edit() {
         show();
-        if (cars.isEmpty()) return;
+        if (vehicles.isEmpty()) return;
 
         System.out.print("Select name Brand you want to edit ");
 	String name = input.nextLine();
 
 	boolean find = false;
-        for (Car car : cars) {
+        for (Car car :vehicles) {
         if (car.getName().equalsIgnoreCase(name)) {
             System.out.print("Input New Name brand: ");
             String newname = input.nextLine();
@@ -104,5 +123,6 @@ public class Main {
     }
 }
 
+*/
 }
 
