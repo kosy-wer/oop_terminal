@@ -19,7 +19,7 @@ public abstract class Transportation {
 
     @Override
     public String toString() {
-        return "Car: " + name;
+        return "Transpostation: " + name;
     }
 }
 

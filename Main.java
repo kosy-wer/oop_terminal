@@ -6,8 +6,9 @@ import java.util.Iterator;
 
 
 public class Main {
-    static ArrayList<Car> vehicles = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
+    static ArrayList<Transportation> vehicles = new ArrayList<>();
+
 
     public static void main(String[] args) {
         while (true) {
@@ -23,9 +24,10 @@ public class Main {
         System.out.print("Choose option : ");
         String choice = input.nextLine();
             switch (choice) {
-                case "Add" -> add();/*
-                case "Remove" -> remove();
+                case "Add" -> add();
                 case "Show" -> show();
+			/*
+                case "Remove" -> remove();
                 case "Edit" -> edit();*/
                 case "Exit" -> {
                     System.out.println("Quit...");
@@ -35,42 +37,53 @@ public class Main {
             }
         }
     }
+static void add() {
+    System.out.println("+----------------------------+");
+    System.out.println("|    🚘 Vehicle Selection    |");
+    System.out.println("+----------------------------+");
+    System.out.println("| 1. Car 🚗                  |");
+    System.out.println("| 2. Bus 🚌                  |");
+    System.out.println("| 3. Truck 🚚                |");
+    System.out.println("+----------------------------+");
+    System.out.print("Choose vehicle : ");
+    String vehicle = input.nextLine();
 
-    static void add() {
-     System.out.println("+----------------------------+");
-        System.out.println("|    🚘 Vehicle Selection    |");
-        System.out.println("+----------------------------+");
-        System.out.println("| 1. Car 🚗                  |");
-        System.out.println("| 2. Bus 🚌                  |");
-        System.out.println("| 3. Truck 🚚                |");
-        System.out.println("+----------------------------+");
-        System.out.print("Choose vehicle : ");
-        String vehicle = input.nextLine();
-	String[] Transportations = {"Car","Bus","Truck",};
-	boolean verife = false; 
- 	for (String T : Transportations) {
-	 if (T.equalsIgnoreCase(vehicle)){
+    System.out.print("Input name: ");
+    String name = input.nextLine();
 
-	    verife = true;
-	    break;	
-	 }
-        }
-	if (verife == false) {
-            System.out.println("Gagal");
-        }	
-            
-    }
-/*
-    static void show() {
-        if (vehicles.isEmpty()) {
-            System.out.println("data empty");
+    Transportation transportation;
+
+    switch (vehicle.toLowerCase()) {
+        case "car" -> transportation = new Car(name);
+        case "bus" -> transportation = new Bus(name);
+        case "truck" -> transportation = new Truck(name);
+        default -> {
+            System.out.println("Tipe kendaraan tidak dikenal.");
             return;
         }
-
-        for (int i = 0; i < cars.size(); i++) {
-            System.out.println((i + 1) + ". " + cars.get(i));
-        }
     }
+
+    vehicles.add(transportation); // Tambah ke list
+    System.out.println("Berhasil ditambahkan: " + transportation);
+}
+
+            
+static void show() {
+    if (vehicles.isEmpty()) {
+        System.out.println("Belum ada kendaraan yang ditambahkan.");
+        return;
+    }
+
+    System.out.println("+-------------------------+");
+    System.out.println("|   Daftar Kendaraan      |");
+    System.out.println("+-------------------------+");
+    for (int i = 0; i < vehicles.size(); i++) {
+        System.out.println((i + 1) + ". " + vehicles.get(i));
+    }
+}
+
+
+/*
     static void edit() {
         show();
         if (vehicles.isEmpty()) return;
@@ -95,7 +108,6 @@ public class Main {
         System.out.println("failed find name brand");
  }
 }
-
   static void remove() {
     if (cars.isEmpty()) {
         System.out.println("Data empty");
